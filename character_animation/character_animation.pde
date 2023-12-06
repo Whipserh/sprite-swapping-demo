@@ -5,14 +5,15 @@
 //coin audio from https://pixabay.com/sound-effects/coin-c-02-102844/
 
 PImage map;
-
+import processing.sound.*;
+SoundFile coinSfx;
 Coin coin;
 Hero character;
 
 void setup(){
   size(400, 400);
   map = loadImage("sample_map.png");
-  
+  coinSfx = new SoundFile(this, "data/coin_c_02-102844.wav");
   coin = new Coin();
   
   character = new Hero();
