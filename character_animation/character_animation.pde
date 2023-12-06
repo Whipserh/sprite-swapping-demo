@@ -7,15 +7,25 @@
 PImage map;
 import processing.sound.*;
 SoundFile coinSfx;
+SoundFile step;
+PImage characterSheet; 
 Coin coin;
 Hero character;
+int xOffset;
+int yOffset;
+int fWidth;
+int fHeight; 
 
 void setup(){
   size(400, 400);
   map = loadImage("sample_map.png");
-  coinSfx = new SoundFile(this, "data/coin_c_02-102844.wav");
+ 
+  coinSfx = new SoundFile(this, "data/coin_c_02-102844.wav"); 
+  characterSheet = loadImage("stella_walk.png"); 
+  fWidth = characterSheet.width;
+  fHeight = characterSheet.height;
   coin = new Coin();
-
+  step = new SoundFile(this, "data/footstep00.wav"); 
   character = new Hero();
 }
 
