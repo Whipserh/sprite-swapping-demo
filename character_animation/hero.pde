@@ -36,6 +36,7 @@ class Hero {
       frames = 0;
     }
     if ((frames == 1 || frames == 3)&& !step.isPlaying()){
+      step.rate(random(0.9, 1.1));
       step.play();
     }
     //SOUTH, WEST, EAST, NORTH, SE, SW, NW, NE
