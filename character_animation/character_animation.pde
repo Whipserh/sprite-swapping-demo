@@ -5,14 +5,20 @@
 //coin audio from https://pixabay.com/sound-effects/coin-c-02-102844/
 
 PImage map;
-
+PImage characterSheet;
 Coin coin;
 Hero character;
+int xOffset;
+int yOffset;
+int fWidth;
+int fHeight;
 
 void setup(){
   size(400, 400);
   map = loadImage("sample_map.png");
-  
+  characterSheet = loadImage("stella_walk.png");
+  fWidth = characterSheet.width;
+  fHeight = characterSheet.height;
   coin = new Coin();
   
   character = new Hero();
