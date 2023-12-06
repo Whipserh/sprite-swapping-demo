@@ -35,33 +35,37 @@ class Hero {
     if (movement.x == 0 && movement.y == 0) {
       frames = 0;
     }
-    
-    if (movement.x > 0) {//move down
-      if (movement.y > 0) {//move right
-        direction = DIRECTION.SE;
-      } else if (movement.y < 0) {// moving left
-        direction = DIRECTION.SW;
-      } else {//not moving up or down
-        direction = DIRECTION.SOUTH;
-      }
-    } else if (movement.x < 0) {//if moving up
-    if (movement.y > 0) {//move right
-        direction = DIRECTION.NE;
-      } else if (movement.y < 0) {// moving left
-        direction = DIRECTION.NW;
-      } else {//not moving up or down
-        direction = DIRECTION.NORTH;
-      }
-    } else {//not moving up or down
-    direction = DIRECTION.NORTH;
+    if ((frames == 1 || frames == 3)&& !step.isPlaying()){
+      step.play();
     }
+    //SOUTH, WEST, EAST, NORTH, SE, SW, NW, NE
+    if( velocity.x == 0 && velocity.y == 1){
+     direction = Direction.SOUTH; 
+    }else if(velocity.x == -1 && velocity.y == 0){
+     direction = Direction.WEST; 
+    }else if(velocity.x == 1 && velocity.y == 0){
+     direction = Direction.EAST; 
+    }else if(velocity.x == 0 && velocity.y == -1){
+     direction = Direction.NORTH; 
+    }else if(velocity.x == 1 && velocity.y == 1){
+     direction = Direction.SE; 
+    }else if(velocity.x == -1 && velocity.y == 1){
+     direction = Direction.SW; 
+    }else if(velocity.x == -1 && velocity.y == -1){
+     direction = Direction.NW; 
+    }else if(velocity.x == 1 && velocity.y == -1){
+     direction = Direction.NE; 
+    }
+    
+    
   }
 
   void display() {
     fill(255);
-    rect(position.x - xWidth/4, position.y - 0.9 * yHeight, xWidth/2, yHeight);
-    
-    copy(characterSheet, xOffset + (frames * fWidth), yOffset + direction, fWidth, fHeight, position.x, position.y, (int) xWidth/2, yHeight);
+    //rect(position.x - xWidth/4, position.y - 0.9 * yHeight, xWidth/2, yHeight);
+
+    copy(characterSheet, xOffset + (frames * fWidth), 
+    yOffset +yHeight* direction.ordinal(), fWidth, fHeight, int(position.x - xWidth/4), int(position.y - 0.9 * yHeight), int(xWidth/2), yHeight);
 
     if (frameCount % 10==0) {
       frames = (frames + 1)% 4;

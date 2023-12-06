@@ -3,7 +3,8 @@
 //background art from https://www.kenney.nl/assets/roguelike-rpg-pack
 //footstep audio from https://www.kenney.nl/assets/rpg-audio
 //coin audio from https://pixabay.com/sound-effects/coin-c-02-102844/
-
+import processing.sound.*;
+SoundFile step;
 PImage map;
 PImage characterSheet;
 Coin coin;
@@ -20,7 +21,7 @@ void setup(){
   fWidth = characterSheet.width;
   fHeight = characterSheet.height;
   coin = new Coin();
-  
+  step = new SoundFile(this, "data/footstep00.wav");
   character = new Hero();
 }
 
