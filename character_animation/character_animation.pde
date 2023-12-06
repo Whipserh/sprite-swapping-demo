@@ -14,7 +14,7 @@ void setup(){
   map = loadImage("sample_map.png");
   
   coin = new Coin();
-
+  
   character = new Hero();
 }
 
